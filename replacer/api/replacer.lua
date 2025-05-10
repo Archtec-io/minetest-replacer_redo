@@ -265,6 +265,11 @@ function api.replace(toolstack, player, pointed_thing)
 		return
 	end
 
+	if current_node.name == to_place_name then
+		replacer.log("action", "tried to replace node by itself: ignored")
+		return
+	end
+
 	-- remember these in case we need to undo
 	local old_meta = minetest.get_meta(pos):to_table()
 	local old_player_inventory = player_inv:get_list("main")
